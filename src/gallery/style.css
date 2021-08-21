@@ -7,19 +7,26 @@
 
 body{
     position: relative;
-    z-index: 15;    
 }
 
 .create-gallery{
-    display: none;
-    left: 20%;
+    display: block;
     position: absolute;
-    border: 3px solid rgb(188, 194, 255);
+    left: 20%;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: #2af;
     z-index: 20;
     padding: 25px;
     width: 60%;
+    height: fit-content;
+    transform: scale(0);
+    transition:  transform .2s;
+}
+
+.create-gallery > span{
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
 }
 
 .create-gallery__config{
@@ -29,14 +36,15 @@ body{
 .create-gallery__config-img{
     position: relative;
     display: grid;
-    grid-template-rows: 50px 100px;
+    grid-template-rows: 50px 500px;
 }
 #img-preview{
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 70%;
+    height: 100%;
     object-fit: cover;
+    z-index: 1;
 }
 #title-img{
     border: none;
@@ -44,6 +52,7 @@ body{
     font-size: 18px;
     border-bottom: 4px solid #0cf;
     transition: all .2s;
+    z-index: 5;
 }
 #title-img:focus{
     border-bottom: 4px solid #0bf;
@@ -61,7 +70,7 @@ body{
 
 .create-gallery__config__btn #confirm{
     cursor: pointer;
-    background-color: #0af;
+    background-color: rgb(108, 191, 233);
     color: #fff;
 }
 #confirm:hover{
@@ -74,8 +83,10 @@ body{
     color: #fff;
 }
 h1{
+    background-color: #2af;
+    color: #fff;
     text-align: center;
-    margin: 30px;
+    padding: 15px;
 }
 
 .container{
@@ -160,6 +171,9 @@ h1{
 
 
 .zona-arrastre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     z-index: 5;
     border: 4px dashed #000;
@@ -167,30 +181,34 @@ h1{
     margin: 30px auto;
     height: 150px;
 }
-
+#file{
+    position: relative;
+    z-index: 4;
+}
 .zona-arrastre::before{
     content: 'Pick an image here';
     position: absolute;
-    top: 0;
+    top: 30px;
     left: 0;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    z-index: 1;
+    
 }
 
 #back-to-galery{
     visibility: hidden;
-    padding: 15px;
+    padding: 15px 50px;
     background: #0bf;
     color: #fff;
     border: none;
     outline: none;
     position: relative;
-    width: 200px;
     font-size: 18px;
-    left: 45px;
+    margin-top: 20px;
+    transform: translateX(50px);
 }
 
 #back-to-galery:active{
@@ -200,13 +218,14 @@ h1{
 .no-img{
     text-align: center;
     font-size: 45px;
-    color:  #faa;
-    border-bottom: 3px solid #f20;
+    font-weight: bold;
+    color:  #2af;
 }
 
 /* FOOTER */
 
 footer{
+    position: relative;
     background: #2af;
 }
 .contact-section, #copy-section{
