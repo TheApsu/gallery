@@ -1,0 +1,269 @@
+*{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    position: relative;
+    z-index: 15;    
+}
+
+.create-gallery{
+    display: none;
+    left: 20%;
+    position: absolute;
+    border: 3px solid rgb(188, 194, 255);
+    border-radius: 10px;
+    background-color: #fff;
+    z-index: 20;
+    padding: 25px;
+    width: 60%;
+}
+
+.create-gallery__config{
+    display: grid;
+    grid-template-rows: 200px 50px;
+}
+.create-gallery__config-img{
+    position: relative;
+    display: grid;
+    grid-template-rows: 50px 100px;
+}
+#img-preview{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+}
+#title-img{
+    border: none;
+    outline: none;
+    font-size: 18px;
+    border-bottom: 4px solid #0cf;
+    transition: all .2s;
+}
+#title-img:focus{
+    border-bottom: 4px solid #0bf;
+
+}
+.create-gallery__config__btn{
+    display: flex;
+    justify-content: space-between;
+}
+.create-gallery__config__btn input{
+    border: none;
+    margin-top: 10px;
+    flex-basis: 100%;
+}
+
+.create-gallery__config__btn #confirm{
+    cursor: pointer;
+    background-color: #0af;
+    color: #fff;
+}
+#confirm:hover{
+    background-color: #0cf;
+}
+
+#cancel:hover{
+    background-color: #f40;
+    cursor: pointer;
+    color: #fff;
+}
+h1{
+    text-align: center;
+    margin: 30px;
+}
+
+.container{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 350px));
+    justify-content: space-evenly;
+    grid-gap: 40px;
+    padding: 30px;
+    opacity: 1;
+    transition: all .2s;
+}
+
+.container__galery-img{
+    position: relative;
+    box-shadow: 5px 5px 5px #ccc;
+}
+
+.image{
+    height: 200px;
+    overflow: hidden;
+}
+
+.title-img{
+    display: flex;
+    position: absolute;
+    padding: 25px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 6;
+    visibility: collapse;
+}
+.title-img span {
+    text-transform: uppercase;
+    font-size: 45px;
+    color: rgb(231, 231, 231);
+}
+.image-pic{
+    width: 100%;
+    height: 200px;
+    object-fit: fill;
+    transition: all .2s;
+}
+
+
+.container__galery-img:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.container__galery-img:hover > .title-img{
+    background-color: rgba(53, 48, 48, 0.637);
+    visibility: visible;
+}
+
+.images-selected{
+    position: relative;
+    overflow: hidden;
+    display: none;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 300px));
+    padding: 45px;
+    grid-gap: 30px;
+    transition: all .3s;
+}
+
+.images-selected > .cat-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.cat-img:nth-child(1){
+    grid-column: 1 / 3;
+}
+
+.cat-img:nth-child(3){
+    grid-row: 2 / 4;
+}
+
+
+.zona-arrastre{
+    position: relative;
+    z-index: 5;
+    border: 4px dashed #000;
+    width: 50%;
+    margin: 30px auto;
+    height: 150px;
+}
+
+.zona-arrastre::before{
+    content: 'Pick an image here';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#back-to-galery{
+    visibility: hidden;
+    padding: 15px;
+    background: #0bf;
+    color: #fff;
+    border: none;
+    outline: none;
+    position: relative;
+    width: 200px;
+    font-size: 18px;
+    left: 45px;
+}
+
+#back-to-galery:active{
+    background-color: #0cf;
+}
+
+.no-img{
+    text-align: center;
+    font-size: 45px;
+    color:  #faa;
+    border-bottom: 3px solid #f20;
+}
+
+/* FOOTER */
+
+footer{
+    background: #2af;
+}
+.contact-section, #copy-section{
+    text-align: center;
+    flex-basis: 100%;
+}
+
+#contact{
+    display: flex;
+    padding: 20px;
+    color: #fff;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#contact > span{
+    text-transform: uppercase;
+    font-size: 20px;
+    padding: 15px;
+}
+
+#contact-list{
+    border-top: 1px solid #fff;
+    padding: 8px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+#contact-list li{
+    list-style: none;
+}
+#contact-list li a{
+    color: #fff;
+    font-size: 25px;
+    padding: 20px;
+    transition: color, font-size .1s ease-in;
+}
+
+#contact-list li:nth-child(1):hover > a{
+    color: rgb(219, 93, 20);
+}
+#contact-list li:nth-child(2):hover > a{
+    color: #af0;
+}
+#contact-list li:nth-child(3):hover > a{
+    color: #0cf;
+}
+#contact-list li:nth-child(4):hover > a{
+    color: #00f;
+}
+#contact-list li:nth-child(5):hover > a{
+    color: #0fc;
+}
+#contact-list li:nth-child(6):hover > a{
+    color: #00c0f9;
+}
+#contact-list li:nth-child(7):hover > a{
+    color: #ee9e;
+}
