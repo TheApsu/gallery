@@ -1,7 +1,3 @@
-const circle = document.querySelectorAll('.circle')
-
-for(let i = 0; i < circle.length; i++){
-    circle[i].addEventListener('animationstart', e => {
-        console.log(e)
-    })
-}
+document.getElementById('btn-url').addEventListener('click', e => {
+    window.location.replace(e.path[0].children[0].href)
+})
