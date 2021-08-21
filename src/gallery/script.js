@@ -4,6 +4,7 @@ const btnCancel = document.getElementById('cancel');
 const imageSelected = document.querySelector('.images-selected');
 let fragment = document.createDocumentFragment();
 let galeryImg;
+
 let imgObject = [
     
     news = [],
@@ -75,21 +76,25 @@ btnConfirm.addEventListener('click', () => {
     else {
         imgObject.push([])
         addGalleryChild(titleGallery, imagePreview); //Llamando a la funcion para que añada la galeria al dom
-        document.querySelector('.create-gallery').style.display = 'none';
+        document.querySelector('.create-gallery').style.transform = 'scale(0)'
     };
 });
 
 btnCancel.addEventListener('click', () => {
-    document.querySelector('.create-gallery').style.display = 'none';
+    document.querySelector('.create-gallery').style.transform = 'scale(0)'
 });
 
 const loadImage = imgURL => {
     document.getElementById('img-preview').src = imgURL;
-    document.querySelector('.create-gallery').style.display = 'block';
+    document.querySelector('.create-gallery').style.transform = 'scale(1)';
 };
 
-const FR = (ar, node) => {
+document.getElementById('file').addEventListener('change', e => {
+    FR(e.target.files[0])
+})
 
+const FR = (ar, node) => {
+    console.log(ar)
     const FR = new FileReader();
     FR.readAsDataURL(ar);
     FR.addEventListener('load', e => {
@@ -123,6 +128,7 @@ addNewGalery.addEventListener('drop', e => {
     changeColor(e.srcElement, '#000');
     e.preventDefault();
     FR(e.dataTransfer.files[0]);
+    console.log(e)
 });
 
 
@@ -130,6 +136,7 @@ const dataLenght = imgDataLength => {
     galeryImg = document.querySelectorAll('.container__galery');
     for(let i = 0; i < imgDataLength; i++){
         galeryImg[i].addEventListener('click', () => {
+            if(document.querySelector('.create-gallery').style.display == 'block') document.querySelector('.create-gallery').style.display = 'none'
             FuncURL(galeryImg[i].id);
             document.getElementById('back-to-galery').style.visibility = 'visible'; //BTN regresar
             document.querySelector('.container').style.display = 'none';
@@ -154,11 +161,12 @@ const dataLenght = imgDataLength => {
 dataLenght(imgObject.length)
 
 document.getElementById('back-to-galery').addEventListener('click', e => {
+    imageSelected.removeAttribute('style')
     document.querySelector('.container').style.display = 'grid';
     imageSelected.style.display = 'none';
     imageSelected.innerHTML = "";
     e.target.style.visibility = 'hidden';
-    document.querySelector('.zona-arrastre').style.display = 'block';
+    document.querySelector('.zona-arrastre').style.display = 'flex';
 });
 
 const FuncURL = key => { 
@@ -167,9 +175,10 @@ const FuncURL = key => {
     if(img.length < 1){
         imageSelected.style.display = 'flex';
         let span = document.createElement('SPAN');
-        span.textContent = 'No hay imagenes en esta galeria';
+        span.textContent = "There isn't images in this gallery :(";
         span.classList.add('no-img');
         imageSelected.appendChild(span);
+        imageSelected.style.height = '100vh'
     }else {
         imageSelected.style.display = 'grid';
         for(u of img){          
